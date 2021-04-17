@@ -78,6 +78,7 @@ public class RegistrationController {
 		}
 	}
 	
+	//completed admin 
 	/*
 	 * @PostMapping("/addroute") public Status addroute(@RequestBody Route route) {
 	 * try { adminService.addroute(route); Status status= new Status();

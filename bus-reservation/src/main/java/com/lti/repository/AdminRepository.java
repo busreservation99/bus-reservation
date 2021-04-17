@@ -10,6 +10,7 @@ import com.lti.entity.Bus;
 import com.lti.entity.BusSeat;
 import com.lti.entity.Route;
 import com.lti.entity.Schedule;
+//admin repo 
 
 @Repository
 public class AdminRepository extends GenericRepository {

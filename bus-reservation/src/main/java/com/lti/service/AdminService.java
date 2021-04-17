@@ -18,6 +18,7 @@ public class AdminService {
 	@Autowired
 	private AdminRepository adminRepository;
 	
+	//adding bus
 	public int addBus(Bus bus) {
 		
 		if(adminRepository.isBusPresent(bus.getBusNumber()))
@@ -28,12 +29,15 @@ public class AdminService {
 		}
 	}
 	
+	//deleting bus
 	public void removeBus(int busNumber) {
 		adminRepository.removebus(busNumber);
 	}
-	
+	//adding routes
 	public void addroute(Route route) {
 		GenericRepository g = new GenericRepository();
 		g.save(route);
 	}
+	
+	
 }
