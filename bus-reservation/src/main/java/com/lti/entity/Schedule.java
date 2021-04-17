@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="bus_schedule")
@@ -28,10 +31,12 @@ public class Schedule {
 	private LocalDate busDepartureDate;
 	
 	@Column(name="arrival_time")
-	private LocalTime arrivalTime;
+	@JsonFormat(pattern = "hh:mm:ss a")
+	private String arrivalTime;
 	
 	@Column(name="departure_time")
-	private LocalTime departureTime;
+	@JsonFormat(pattern = "hh:mm:ss a")
+	private String departureTime;
 	
 	
 	@ManyToOne
@@ -71,19 +76,19 @@ public class Schedule {
 		this.bus = bus;
 	}
 
-	public LocalTime getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(LocalTime arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
-	public LocalTime getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
 
-	public void setDepartureTime(LocalTime departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 	
