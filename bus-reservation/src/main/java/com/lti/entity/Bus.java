@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class Bus {
 
 	@Id
-	@GeneratedValue
 	@Column(name="bus_number")
 	private int busNumber;
 	
