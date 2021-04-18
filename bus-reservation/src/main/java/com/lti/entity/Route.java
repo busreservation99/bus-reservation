@@ -1,7 +1,6 @@
 package com.lti.entity;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +26,9 @@ public class Route {
 	private double fare;
 	
 	@Column(name="stop_arrival_time")
-	private String  stopArrivalTime;
+
+	private String stopArrivalTime;
+
 	
 	@Column(name="stop_departure_time")
 	private String stopDepartureTime;
