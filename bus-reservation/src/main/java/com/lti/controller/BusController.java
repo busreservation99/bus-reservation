@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -90,11 +91,12 @@ public class BusController {
 		}
 	}
 	
+	
 	@GetMapping("/fetchBus3")
-	public List<Bus> fetchAllBus3(@RequestParam("source") String source, @RequestParam("destination") String destination, @RequestParam("date") LocalDate date ) {
+	public List<Schedule> fetchAllBus3(@RequestParam("source") String source, @RequestParam("destination") String destination, @RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date ) {
 		try {
 			Status status= new Status();
-			List<Bus> b=(List<Bus>)busService.fetchBus2(source, destination, date);
+			List<Schedule> b=(List<Schedule>)busService.fetchBus2(source, destination, date);
 			if(!b.isEmpty()) {
 				status.setStatus(true);
 				status.setMessage("Bus fetched Successfully");
@@ -106,7 +108,7 @@ public class BusController {
 			}
 		}
 		catch(BusServiceException e) {
-			List<Bus> b = null;
+			List<Schedule> b = null;
 			Status status= new Status();
 			status.setStatus(false);
 			status.setMessage("Sorry no buses found!!");

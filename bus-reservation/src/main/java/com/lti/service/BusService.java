@@ -44,7 +44,7 @@ public class BusService {
 		return busRepository.getBus(source, desitnation);
 			}
 	
-	public List<Bus> fetchBus2(String source, String desitnation, LocalDate date){
+	public List<Schedule> fetchBus2(String source, String desitnation, LocalDate date){
 		return busRepository.getBus2(source, desitnation, date);
 			}
 }
