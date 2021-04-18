@@ -91,7 +91,7 @@ public class BusController {
 		}
 	}
 	
-	
+	/* Final working code for fetching Bus details */
 	@GetMapping("/fetchBus3")
 	public List<Schedule> fetchAllBus3(@RequestParam("source") String source, @RequestParam("destination") String destination, @RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date ) {
 		try {
