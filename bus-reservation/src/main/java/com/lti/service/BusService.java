@@ -1,5 +1,7 @@
 package com.lti.service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +42,9 @@ public class BusService {
 	
 	public List<Bus> fetchBus(String source, String desitnation){
 		return busRepository.getBus(source, desitnation);
+			}
+	
+	public List<Bus> fetchBus2(String source, String desitnation, LocalDate date){
+		return busRepository.getBus2(source, desitnation, date);
 			}
 }

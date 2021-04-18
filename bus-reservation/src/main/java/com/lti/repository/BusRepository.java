@@ -1,5 +1,6 @@
 package com.lti.repository;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -38,6 +39,17 @@ public class BusRepository extends GenericRepository{
 				.createQuery("select b.source,b.destination from Bus b WHERE b.source=:src and b.destination=:dst")
 				.setParameter("dst", destination)
 				.setParameter("src", source)
+				.getResultList();		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Bus> getBus2(String source, String destination, LocalDate date){
+		return 
+				entityManager
+				.createQuery("select b.source,s.busDepartureDate from Bus b join Schedule s on b.busNumber=s.busNumber where b.source=:source and b.destination=:destination and s.busDepartureDate=:date")    
+				.setParameter("dst", destination)
+				.setParameter("src", source)
+				.setParameter("date", date)
 				.getResultList();		
 	}
 }

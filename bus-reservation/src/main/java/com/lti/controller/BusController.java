@@ -1,5 +1,7 @@
 package com.lti.controller;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +63,54 @@ public class BusController {
 			status.setStatus(false);
 			status.setMessage("Sorry no buses found!!");
 			return status;
+		}
+	}
+	
+	@GetMapping("/fetchBus2")
+	public List<Bus> fetchAllBus2(@RequestParam("source") String source, @RequestParam("destination") String destination ) {
+		try {
+			Status status= new Status();
+			List<Bus> b=(List<Bus>)busService.fetchBus(source, destination);
+			if(!b.isEmpty()) {
+				status.setStatus(true);
+				status.setMessage("Bus fetched Successfully");
+				return b;
+			}
+			else {
+				status.setMessage("Sorry no buses found!!");
+				return b;
+			}
+		}
+		catch(BusServiceException e) {
+			List<Bus> b = null;
+			Status status= new Status();
+			status.setStatus(false);
+			status.setMessage("Sorry no buses found!!");
+			return b ;
+		}
+	}
+	
+	@GetMapping("/fetchBus3")
+	public List<Bus> fetchAllBus3(@RequestParam("source") String source, @RequestParam("destination") String destination, @RequestParam("date") LocalDate date ) {
+		try {
+			Status status= new Status();
+			List<Bus> b=(List<Bus>)busService.fetchBus2(source, destination, date);
+			if(!b.isEmpty()) {
+				status.setStatus(true);
+				status.setMessage("Bus fetched Successfully");
+				return b;
+			}
+			else {
+				status.setMessage("Sorry no buses found!!");
+				return b;
+			}
+		}
+		catch(BusServiceException e) {
+			List<Bus> b = null;
+			Status status= new Status();
+			status.setStatus(false);
+			status.setMessage("Sorry no buses found!!");
+			return b ;
 		}
 	}
 }
