@@ -40,4 +40,18 @@ public class BusRepository extends GenericRepository{
 				.setParameter("src", source)
 				.getResultList();		
 	}
+
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<Schedule> getBus2(String source, String destination, LocalDate date){
+		return 
+				entityManager
+				.createQuery("select b.source,s.busDepartureDate from Schedule s join s.bus b where b.source=:src and b.destination=:dst and s.busDepartureDate=:date")    
+				.setParameter("dst", destination)
+				.setParameter("src", source)
+				.setParameter("date", date)
+				.getResultList();		
+	}
+
 }

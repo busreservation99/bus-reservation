@@ -69,5 +69,29 @@ public class BusController {
 	
 	
 
+	/* Final working code for fetching Bus details */
+	@GetMapping("/fetchBus3")
+	public List<Schedule> fetchAllBus3(@RequestParam("source") String source, @RequestParam("destination") String destination, @RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date ) {
+		try {
+			Status status= new Status();
+			List<Schedule> b=(List<Schedule>)busService.fetchBus2(source, destination, date);
+			if(!b.isEmpty()) {
+				status.setStatus(true);
+				status.setMessage("Bus fetched Successfully");
+				return b;
+			}
+			else {
+				status.setMessage("Sorry no buses found!!");
+				return b;
+			}
+		}
+		catch(BusServiceException e) {
+			List<Schedule> b = null;
+			Status status= new Status();
+			status.setStatus(false);
+			status.setMessage("Sorry no buses found!!");
+			return b ;
+		}
+	}
 
 }
