@@ -7,17 +7,18 @@ import com.lti.entity.Route;
 import com.lti.exception.RouteServiceException;
 import com.lti.repository.RouteRepository;
 
-
+/*Adding Route To Buses*/ /*Arguement Added*/
 @Service
 @Transactional
 public class RouteService {
 
+	
 	@Autowired
 	private RouteRepository routeRepository;
 	
 	public int addRoute(Route route) {
 		
-		if(routeRepository.isRoutePresent(route.getBus().getBusNumber())){
+		if(routeRepository.isRoutePresent(route.getBus().getBusNumber(), route.getBusStopName())){
 			throw new RouteServiceException("Route already present");
 		}
 		else {
