@@ -24,6 +24,7 @@ public class Bus {
 	private String busName;
 	
 	private String source ;
+	
 	private String destination;
 	
 	@OneToMany(mappedBy = "bus")

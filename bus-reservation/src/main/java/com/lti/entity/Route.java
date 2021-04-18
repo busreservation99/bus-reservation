@@ -27,10 +27,10 @@ public class Route {
 	private double fare;
 	
 	@Column(name="stop_arrival_time")
-	private LocalTime stopArrivalTime;
+	private String stopArrivalTime;
 	
 	@Column(name="stop_departure_time")
-	private LocalTime stopDepartureTime;
+	private String stopDepartureTime;
 	
 	@OneToOne
 	@JoinColumn(name="bus_number")
@@ -60,20 +60,19 @@ public class Route {
 		this.fare = fare;
 	}
 
-
-	public LocalTime getStopArrivalTime() {
+	public String getStopArrivalTime() {
 		return stopArrivalTime;
 	}
 
-	public void setStopArrivalTime(LocalTime stopArrivalTime) {
+	public void setStopArrivalTime(String stopArrivalTime) {
 		this.stopArrivalTime = stopArrivalTime;
 	}
 
-	public LocalTime getStopDepartureTime() {
+	public String getStopDepartureTime() {
 		return stopDepartureTime;
 	}
 
-	public void setStopDepartureTime(LocalTime stopDepartureTime) {
+	public void setStopDepartureTime(String stopDepartureTime) {
 		this.stopDepartureTime = stopDepartureTime;
 	}
 
