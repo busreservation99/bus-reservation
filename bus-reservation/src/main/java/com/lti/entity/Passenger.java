@@ -16,6 +16,7 @@ public class Passenger {
 	@Id
 	@GeneratedValue
 	private int id;
+	
 	private String name;
 	@Column(name="phone_number")
 	private double phoneNumber;
