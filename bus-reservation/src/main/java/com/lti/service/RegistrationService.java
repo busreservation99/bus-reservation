@@ -30,6 +30,7 @@ public class RegistrationService {
 			registration.setPassword(Base64.getEncoder().encodeToString(registration.getPassword().getBytes()));
 			Registration updateRegistration=(Registration) registrationRepository.save(registration);
 			return updateRegistration.getRegistrationId();
+						
 		}
 		
 	}
