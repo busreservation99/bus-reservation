@@ -5,6 +5,7 @@ import java.util.Base64;
 import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +34,19 @@ public class RegistrationService {
 						
 		}
 		
+	}
+	
+	public Registration login(String email, String password) {
+		try {
+			password = Base64.getEncoder().encodeToString(password.getBytes());
+			int id = registrationRepository.fetchIdByEmailAndPassword(email, password);
+			Registration registration = registrationRepository.fetch(Registration.class, id);
+			return registration;
+		}
+		catch(EmptyResultDataAccessException e) {
+		//catch(NoResultException e) {
+			throw new RegistrationServiceException("Invalid email/password");
+		}
 	}
 		
 }
