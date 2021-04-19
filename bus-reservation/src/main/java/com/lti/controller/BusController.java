@@ -43,29 +43,29 @@ public class BusController {
 		}
 	}
 	
-	@GetMapping("/fetchBus")
-	public Status fetchAllBus(@RequestParam("source") String source, @RequestParam("destination") String destination ) {
-		try {
-			Status status= new Status();
-			List<Bus> b=(List<Bus>)busService.fetchBus(source, destination);
-			if(!b.isEmpty()) {
-				status.setStatus(true);
-				status.setMessage("Bus fetched Successfully");
-			}
-			else {
-				status.setMessage("Sorry no buses found!!");
-				return status;
-			}
-			return status;
-		}
-		catch(BusServiceException e) {
-			
-			Status status= new Status();
-			status.setStatus(false);
-			status.setMessage("Sorry no buses found!!");
-			return status;
-		}
-	}
+//	@GetMapping("/fetchBus")
+//	public Status fetchAllBus(@RequestParam("source") String source, @RequestParam("destination") String destination ) {
+//		try {
+//			Status status= new Status();
+//			List<Bus> b=(List<Bus>)busService.fetchBus(source, destination);
+//			if(!b.isEmpty()) {
+//				status.setStatus(true);
+//				status.setMessage("Bus fetched Successfully");
+//			}
+//			else {
+//				status.setMessage("Sorry no buses found!!");
+//				return status;
+//			}
+//			return status;
+//		}
+//		catch(BusServiceException e) {
+//			
+//			Status status= new Status();
+//			status.setStatus(false);
+//			status.setMessage("Sorry no buses found!!");
+//			return status;
+//		}
+//	}
 	
 	
 

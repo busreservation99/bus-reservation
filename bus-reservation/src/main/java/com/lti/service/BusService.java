@@ -15,21 +15,21 @@ import com.lti.repository.BusRepository;
 @Transactional
 @Service
 public class BusService {
-	
+
 	@Autowired
 	private BusRepository busRepository;
-	
+
 	public int addBus(Bus bus) {
-		if(busRepository.isBusPresent(bus.getSource(), bus.getDestination(), bus.getBusName())){
+		if (busRepository.isBusPresent(bus.getSource(), bus.getDestination(), bus.getBusName())) {
 			throw new BusServiceException("Bus already present");
 		}
-		
+
 		else {
-			Bus updateBus=(Bus) busRepository.save(bus);
+			Bus updateBus = (Bus) busRepository.save(bus);
 			return updateBus.getBusNumber();
 		}
 	}
-	
+
 	/*
 	 * public List<Schedule> fetchBus(Bus bus){ return
 	 * busRepository.getBus(bus.getSource(), bus.getDestination(),
@@ -38,14 +38,9 @@ public class BusService {
 	 * 
 	 * }
 	 */
-	
-	public List<Bus> fetchBus(String source, String desitnation){
-		return busRepository.getBus(source, desitnation);
-			}
 
-	
-	public List<Schedule> fetchBus2(String source, String desitnation, LocalDate date){
-		return busRepository.getBus2(source, desitnation, date);
-			}
+	public List<Schedule> fetchBus2(String source, String desitnation, LocalDate date) {
+		return busRepository.getBus3(source, desitnation, date);
+	}
 
 }

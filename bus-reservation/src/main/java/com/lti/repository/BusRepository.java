@@ -22,32 +22,22 @@ public class BusRepository extends GenericRepository{
 				 .getSingleResult()==1?true:false;
 	}
 	
-//	public List<Schedule> getBus(String source, String destination,  List<Schedule> schedule ){
-//		return 
-//				entityManager
-//				.createQuery("select b.source,b.destination,s.busDepartureDate from Bus b join Schedule s on b.busNumber=s.busNumber where b.source=:src and"
-//						+ "b.destination=:dst and s.busDepartureDate=:date")
-//				.setParameter("date", schedule)
-//				.setParameter("dst", destination)
-//				.setParameter("src", source)
-//				.getResultList();		
-//	}
-	public List<Bus> getBus(String source, String destination){
-		return 
-				entityManager
-				.createQuery("select b.source,b.destination from Bus b WHERE b.source=:src and b.destination=:dst")
-				.setParameter("dst", destination)
-				.setParameter("src", source)
-				.getResultList();		
-	}
-
-	
-	
+		
 	@SuppressWarnings("unchecked")
 	public List<Schedule> getBus2(String source, String destination, LocalDate date){
 		return 
 				entityManager
 				.createQuery("select b.source,s.busDepartureDate from Schedule s join s.bus b where b.source=:src and b.destination=:dst and s.busDepartureDate=:date")    
+				.setParameter("dst", destination)
+				.setParameter("src", source)
+				.setParameter("date", date)
+				.getResultList();		
+	}
+	
+	public List<Schedule> getBus3(String source, String destination, LocalDate date){
+		return 
+				entityManager
+				.createQuery("select b.busName,b.busType,r.fare,s.departureTime,s.arrivalTime from Bus b join b.schedule s on b.busNumber=s.bus.busNumber join Route r on r.bus.busNumber=b.busNumber  where b.source=:src and b.destination=:dst and s.busDepartureDate=:date")    
 				.setParameter("dst", destination)
 				.setParameter("src", source)
 				.setParameter("date", date)
