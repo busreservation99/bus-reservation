@@ -20,7 +20,9 @@ public class Payment {
 	private String paymentMode;
 	private double amount;
 	
+	
 	@Column(name="transaction_id")
+	@GeneratedValue
 	private int transactionId;
 	
 	@OneToOne(cascade = CascadeType.MERGE)

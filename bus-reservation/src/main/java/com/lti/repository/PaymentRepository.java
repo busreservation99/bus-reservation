@@ -5,11 +5,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PaymentRepository extends GenericRepository {
 	
-	public boolean isPaymentPresent(int transactionId) {
+	public boolean isPaymentPresent(int paymentId) {
 		 return  (Long) 
 				 entityManager
-				 .createQuery("SELECT count(r.transactionId) from Payment r where r.transactionId =:em")
-				 .setParameter("em", transactionId)
+				 .createQuery("SELECT count(r.id) from Payment r where r.id =:em")
+				 .setParameter("em", paymentId)
 				 .getSingleResult()==1?true:false;
 		
 	}

@@ -2,14 +2,16 @@ package com.lti.dto;
 
 public class PassengerStatus extends Status {
 
-private int registeredPassengerId;
+private int id;
 
-public int getRegisteredPassengerId() {
-	return registeredPassengerId;
+public int getId() {
+	return id;
 }
 
-public void setRegisteredPassengerId(int registeredPassengerId) {
-	this.registeredPassengerId = registeredPassengerId;
+public void setId(int id) {
+	this.id = id;
 }
+
+
 
 }
