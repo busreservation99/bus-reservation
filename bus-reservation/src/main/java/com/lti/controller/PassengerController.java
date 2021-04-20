@@ -18,7 +18,7 @@ import com.lti.service.PassengerService;
 @RestController
 @CrossOrigin
 public class PassengerController {
-	
+	// passsenger controller 
 	@Autowired
 	private PassengerService passengerservice;
 	@PostMapping("/addPassenger")
