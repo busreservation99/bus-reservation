@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.lti.dto.Status;
 import com.lti.entity.Booking;
 import com.lti.entity.Passenger;
@@ -13,10 +14,10 @@ import com.lti.exception.BookingServiceException;
 import com.lti.exception.PassengerServiceException;
 import com.lti.service.BookingService;
 import com.lti.service.PassengerService;
-
 @RestController
 @CrossOrigin
 public class BookingController {
+
 	@Autowired
 	private BookingService bookingservice;
 	
@@ -39,4 +40,6 @@ public class BookingController {
 		
 	}
 
+
 }
+

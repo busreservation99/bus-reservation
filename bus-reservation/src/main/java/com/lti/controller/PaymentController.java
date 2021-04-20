@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dto.PaymentStatus;
 import com.lti.dto.Status;
 import com.lti.entity.Booking;
 import com.lti.entity.Payment;
@@ -22,16 +23,16 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentservice ;
 	@PostMapping("/addPayment")
-	public Status addbus(@RequestBody Payment payment) throws BookingServiceException {
+	public PaymentStatus addbus(@RequestBody Payment payment) throws BookingServiceException {
 		try {
 			paymentservice.paymentPresent(payment);
-			Status status= new Status();
+			PaymentStatus status= new PaymentStatus();
 			status.setStatus(true);
 			status.setMessage("payment Added Successfully");
 			return status;
 		}
 		catch(PaymentServiceException e) {
-			Status status= new Status();
+			PaymentStatus status= new PaymentStatus();
 			status.setStatus(false);
 			status.setMessage(e.getMessage());
 			return status;

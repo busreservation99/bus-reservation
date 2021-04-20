@@ -26,20 +26,25 @@ import com.lti.service.PassengerService;
 @RestController
 @CrossOrigin
 public class PassengerController {
-	
+	// passsenger controller 
 	@Autowired
-	private PassengerService passengerService;
+
+	private PassengerService passengerservice;
+	@PostMapping("/addPassenger")
+	public PassengerStatus addbus(@RequestBody Passenger passenger) {
+		try {
+			passengerservice.addPassenger(passenger);
+			PassengerStatus status= new PassengerStatus();
+			status.setStatus(true);
+			status.setMessage("Passenger Added Successfully");
+			return status;
+		}
+		catch(PassengerServiceException e) {
+			PassengerStatus status= new PassengerStatus();
+			status.setStatus(false);
+			status.setMessage(e.getMessage());
+			return status;
+		}
 	
-	@Autowired
-	private GenericRepository genericRepository;
 	
-	@PostMapping("/addPassengers")
-	@Transactional
-	public PassengerStatus addPassenger(@RequestBody List<Passenger> passengers) {
-		genericRepository.save(passengers);
-		return null;
-		
-	}
-	
-	
-}
+	}}

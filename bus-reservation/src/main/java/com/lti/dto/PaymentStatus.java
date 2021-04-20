@@ -10,6 +10,6 @@ public class PaymentStatus  extends Status{
 	public void setRegisteredTransactionId(int registeredTransactionId) {
 		this.registeredTransactionId = registeredTransactionId;
 	}
-	
 
+	
 }

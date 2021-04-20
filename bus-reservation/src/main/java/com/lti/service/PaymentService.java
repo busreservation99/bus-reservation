@@ -21,14 +21,14 @@ public class PaymentService {
 	private PaymentRepository paymentrepository ;
 	
 	public int paymentPresent(Payment payment) {
-		if(paymentrepository.isPaymentPresent(payment.getTransactionId())) {
+		if(paymentrepository.isPaymentPresent(payment.getId())) {
 			throw new PaymentServiceException("payment already in database");
 			
 		}
 		else
 		{
 			Payment b = (Payment)paymentrepository.save(payment);
-			return b.getTransactionId();
+			return b.getId();
 		}
 	}
 	

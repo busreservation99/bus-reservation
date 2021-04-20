@@ -2,15 +2,16 @@ package com.lti.dto;
 
 public class BookingStatus extends Status {
 	
-private int registeredBookingId;
+private int id;
 
-public int getRegisteredBookingId() {
-	return registeredBookingId;
+public int getId() {
+	return id;
 }
 
-public void setRegisteredBookingId(int registeredBookingId) {
-	this.registeredBookingId = registeredBookingId;
+public void setId(int id) {
+	this.id = id;
 }
+
 
 
 }
