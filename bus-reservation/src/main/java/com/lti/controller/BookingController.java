@@ -19,6 +19,7 @@ import com.lti.service.PassengerService;
 public class BookingController {
 	@Autowired
 	private BookingService bookingservice;
+	
 	@PostMapping("/addBooking")
 	public Status addBooking(@RequestBody Booking booking) throws BookingServiceException {
 		try {

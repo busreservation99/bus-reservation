@@ -34,7 +34,5 @@ public class BusSeatStatus<String> extends Status{
 	public void setBusNumber(int busNumber) {
 		this.busNumber = busNumber;
 	}
-
-	
 	
 }
