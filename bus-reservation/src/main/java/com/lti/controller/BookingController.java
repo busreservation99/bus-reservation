@@ -20,9 +20,10 @@ public class BookingController {
 	@Autowired
 	private BookingService bookingservice;
 	@PostMapping("/addBooking")
-	public Status addbus(@RequestBody Booking booking) throws BookingServiceException {
+	public Status addBooking(@RequestBody Booking booking) throws BookingServiceException {
 		try {
-			bookingservice.addBus(booking);
+			
+			bookingservice.addBooking(booking);
 			Status status= new Status();
 			status.setStatus(true);
 			status.setMessage("booking Added Successfully");

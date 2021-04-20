@@ -17,7 +17,7 @@ public class BookingService {
 	@Autowired
 	private BookingRepository bookingrepository;
 	//adding booking
-		public int addBus(Booking booking) throws BookingServiceException {
+		public int addBooking(Booking booking) throws BookingServiceException {
 			
 			if(bookingrepository.isBookingPresent(booking.getId()))
 				throw new BookingServiceException("Booking already in database");
