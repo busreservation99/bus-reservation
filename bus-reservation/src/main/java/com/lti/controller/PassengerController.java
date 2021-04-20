@@ -1,6 +1,13 @@
 package com.lti.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +19,8 @@ import com.lti.dto.Status;
 import com.lti.entity.Passenger;
 
 import com.lti.exception.PassengerServiceException;
-
+import com.lti.repository.GenericRepository;
+import com.lti.service.BookingService;
 import com.lti.service.PassengerService;
 
 @RestController
@@ -20,6 +28,7 @@ import com.lti.service.PassengerService;
 public class PassengerController {
 	// passsenger controller 
 	@Autowired
+
 	private PassengerService passengerservice;
 	@PostMapping("/addPassenger")
 	public PassengerStatus addbus(@RequestBody Passenger passenger) {
@@ -36,7 +45,6 @@ public class PassengerController {
 			status.setMessage(e.getMessage());
 			return status;
 		}
-		
-	}
-		
-}
+	
+	
+	}}

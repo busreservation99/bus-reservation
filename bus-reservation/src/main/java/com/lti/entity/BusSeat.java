@@ -16,12 +16,13 @@ import javax.persistence.Table;
 public class BusSeat {
 
 	@Id
+	@GeneratedValue
 	@Column(name="seat_id")
 	private int  seatId;
 	
 	@Column(name="seat_number")
 	private int seatNumber;
-	private double price;
+	
 	private String status;
 	
 	@OneToOne
@@ -48,13 +49,6 @@ public class BusSeat {
 		this.seatNumber = seatNumber;
 	}
 
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
 
 	public String getStatus() {
 		return status;

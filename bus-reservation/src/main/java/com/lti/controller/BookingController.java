@@ -14,28 +14,32 @@ import com.lti.exception.BookingServiceException;
 import com.lti.exception.PassengerServiceException;
 import com.lti.service.BookingService;
 import com.lti.service.PassengerService;
-
 @RestController
 @CrossOrigin
 public class BookingController {
-	@Autowired
-	private BookingService bookingservice;
-	@PostMapping("/addBooking")
-	public BookingStatus addbus(@RequestBody Booking booking) throws BookingServiceException {
-		try {
-			bookingservice.addBus(booking);
-			BookingStatus status= new BookingStatus();
-			status.setStatus(true);
-			status.setMessage("booking Added Successfully");
-			return status;
-		}
-		catch(PassengerServiceException e) {
-			BookingStatus status= new BookingStatus();
-			status.setStatus(false);
-			status.setMessage(e.getMessage());
-			return status;
-		}
-		
-	}
+@Autowired
+private BookingService bookingservice;
+
+@PostMapping("/addBooking")
+public Status addBooking(@RequestBody Booking booking) throws BookingServiceException {
+try {
+
+bookingservice.addBooking(booking);
+Status status= new Status();
+status.setStatus(true);
+status.setMessage("booking Added Successfully");
+return status;
+}
+catch(PassengerServiceException e) {
+Status status= new Status();
+status.setStatus(false);
+status.setMessage(e.getMessage());
+return status;
+}
 
 }
+
+
+
+}
+
