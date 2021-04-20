@@ -25,11 +25,28 @@ import com.lti.service.PassengerService;
 @CrossOrigin
 public class PassengerController {
 	
-	@PersistenceContext
-	private EntityManager entityManager;
-	
 	@Autowired
-	private BookingService bookingService;
-
+	private PassengerService passengerService;
+	
+	@PostMapping("/addPassengers")
+	public PassengerStatus addPassenger(@RequestBody Passenger passengers) {
+		try {
+		
+		passengerService.addPassenger(passengers);
+		PassengerStatus status= new PassengerStatus();
+		status.setStatus(true);
+		status.setMessage("Passenger Added Successfully");
+		System.out.println("Hello "+passengers.getName());
+		return status;
+		}
+		catch(PassengerServiceException e){
+			PassengerStatus status= new PassengerStatus();
+			status.setStatus(false);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+		
+	}
+	
 	
 }
