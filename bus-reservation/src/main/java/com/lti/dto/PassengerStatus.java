@@ -6,25 +6,12 @@ import com.lti.entity.Passenger;
 
 public class PassengerStatus extends Status {
 
-
-private int id;
-
  private List<Passenger> passengers;
  
  private int passengerNumber;
  
 
-
-
-public int getId() {
-	return id;
-}
-
-public void setId(int id) {
-	this.id = id;
-}
-
-		public int getPassengerNumber() {
+ 	public int getPassengerNumber() {
 			return passengerNumber;
 		}
 		

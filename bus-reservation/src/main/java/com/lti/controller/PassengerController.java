@@ -17,7 +17,7 @@ import com.lti.dto.PassengerStatus;
 import com.lti.dto.Status;
 
 import com.lti.entity.Passenger;
-
+import com.lti.entity.Passengers;
 import com.lti.exception.PassengerServiceException;
 import com.lti.repository.GenericRepository;
 import com.lti.service.BookingService;
@@ -26,25 +26,31 @@ import com.lti.service.PassengerService;
 @RestController
 @CrossOrigin
 public class PassengerController {
-	// passsenger controller 
+	// passsenger controller
 	@Autowired
 
 	private PassengerService passengerservice;
-	@PostMapping("/addPassenger")
-	public PassengerStatus addbus(@RequestBody Passenger passenger) {
+
+	@PostMapping("/addPassengers")
+	public Status addPassengers(@RequestBody Passengers passengers) {
 		try {
-			passengerservice.addPassenger(passenger);
-			PassengerStatus status= new PassengerStatus();
-			status.setStatus(true);
-			status.setMessage("Passenger Added Successfully");
-			return status;
+		List<Passenger> passList = new ArrayList<Passenger>();
+		passList.addAll(passengers.getPassengers());
+		for (Passenger p : passList) {
+			passengerservice.addPassenger(p);
 		}
-		catch(PassengerServiceException e) {
-			PassengerStatus status= new PassengerStatus();
-			status.setStatus(false);
-			status.setMessage(e.getMessage());
-			return status;
+		PassengerStatus status= new PassengerStatus(); 
+		status.setStatus(true);
+		 status.setMessage("Passenger Added Successfully"); 
+		 return status; 
+		 
 		}
-	
-	
-	}}
+		catch(PassengerServiceException e) { 
+		PassengerStatus status= new PassengerStatus(); 
+		status.setStatus(false);
+		status.setMessage(e.getMessage()); 
+		 return status; }
+
+
+		}
+	}
