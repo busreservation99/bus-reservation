@@ -27,7 +27,7 @@ public class Booking {
 	@JoinColumn(name="bus_number")
 	private Bus bus;
 	
-	@OneToMany(mappedBy = "booking",cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
 	private List<Passenger> passengers;
 
 	public int getId() {

@@ -68,10 +68,10 @@ public class RegistrationController {
 	@PostMapping("/addbus")
 	public Status addbus(@RequestBody Bus bus) {
 		try {
-		    adminService.addBus(bus);
+		    int id=adminService.addBus(bus);
 			Status status= new Status();
 			status.setStatus(true);
-			status.setMessage("Bus Added Successfully");
+			status.setMessage("Bus Added Successfully "+id);
 			return status;
 		}
 		catch(RegistrationServiceException e) {

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.lti.dto.BookingDetails;
 import com.lti.dto.Status;
 import com.lti.entity.Booking;
 import com.lti.entity.Passenger;
@@ -22,13 +22,13 @@ public class BookingController {
 	private BookingService bookingservice;
 	
 	@PostMapping("/addBooking")
-	public Status addBooking(@RequestBody Booking booking) throws BookingServiceException {
+	public Status addBooking(@RequestBody BookingDetails bookingDetails) throws BookingServiceException {
 		try {
 			
-			bookingservice.addBooking(booking);
+			int id=bookingservice.addBooking(bookingDetails);
 			Status status= new Status();
 			status.setStatus(true);
-			status.setMessage("booking Added Successfully");
+			status.setMessage("booking Added Successfully + id="+id);
 			return status;
 		}
 		catch(PassengerServiceException e) {

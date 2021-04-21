@@ -29,10 +29,10 @@ public class BusController {
 	@PostMapping("/addBus")
 	public Status addbus(@RequestBody Bus bus) {
 		try {
-			busService.addBus(bus);
+			int id=busService.addBus(bus);
 			Status status= new Status();
 			status.setStatus(true);
-			status.setMessage("Bus Added Successfully");
+			status.setMessage("Bus Added Successfully id" +id);
 			return status;
 		}
 		catch(BusServiceException e) {

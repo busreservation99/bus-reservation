@@ -1,5 +1,6 @@
 package com.lti.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class BusSeat {
 	
 	private String status;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="schedule_id")
 	private Schedule schedule;
 	
