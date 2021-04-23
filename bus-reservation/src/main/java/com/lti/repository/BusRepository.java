@@ -37,7 +37,7 @@ public class BusRepository extends GenericRepository{
 	public List<Schedule> getBus3(String source, String destination, LocalDate date){
 		return 
 				entityManager
-				.createQuery("select DISTINCT(b.busName),b.busType,r.fare,s.departureTime,s.arrivalTime from Bus b join b.schedule s on b.busNumber=s.bus.busNumber join Route r on r.bus.busNumber=b.busNumber  where b.source=:src and b.destination=:dst and s.busDepartureDate=:date")    
+				.createQuery("select DISTINCT(b.busName), b.busNumber,b.busType,r.fare,s.departureTime,s.arrivalTime from Bus b join b.schedule s on b.busNumber=s.bus.busNumber join Route r on r.bus.busNumber=b.busNumber  where b.source=:src and b.destination=:dst and s.busDepartureDate=:date")    
 				.setParameter("dst", destination)
 				.setParameter("src", source)
 				.setParameter("date", date)

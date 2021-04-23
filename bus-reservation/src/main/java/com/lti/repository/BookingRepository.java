@@ -9,7 +9,6 @@ import com.lti.entity.Booking;
 import com.lti.entity.BusSeat;
 
 
-
 @Repository
 public class BookingRepository extends GenericRepository {
 	public boolean isBookingPresent(int bookingId) {
@@ -21,6 +20,7 @@ public class BookingRepository extends GenericRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
+
     public String cancellation(int bookingId) {
         List<BusSeat> sid= new ArrayList();
         sid=entityManager
@@ -37,5 +37,21 @@ public class BookingRepository extends GenericRepository {
         return "Bus Updated!!";
     }
 	
+
+	public String cancellation(int bookingId, int seatPk) {
+		List<BusSeat> sid= new ArrayList<BusSeat>();
+		sid=entityManager
+		 .createQuery("SELECT s.seatId from BusSeat s join Passenger p on s.seatId=p.seatId join p.booking b on b.id=p.bookingId where b.bookingId=:no ")
+		 .setParameter("no", bookingId)
+		 .getResultList();
+		
+		for(BusSeat busSeat:sid) {
+		BusSeat bs=(BusSeat)entityManager.find(BusSeat.class, seatPk);
+		bs.setStatus("Y");
+		entityManager.merge(bs);
+		}
+		return null;
+	}
+
 	
 }
