@@ -31,7 +31,11 @@ public class BookingService {
 			 * (Booking)bookingrepository.save(booking); return b.getId(); }
 			 */
 		}
-	
+	public String cancelBooking(int bookingId ) {
+		String str = bookingrepository.cancellation(bookingId);
+		return str;
+		
+	}
 	
 
 }

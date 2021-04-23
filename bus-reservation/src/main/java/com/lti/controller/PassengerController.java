@@ -53,4 +53,16 @@ public class PassengerController {
 
 
 		}
+	
+	@PostMapping("/addPassengers2")
+	public Status addAllPassengers(@RequestBody List<Passenger> passenger){
+		for (Passenger p : passenger) {
+			passengerservice.addPassenger(p);
+		}
+		PassengerStatus status= new PassengerStatus(); 
+		status.setStatus(true);
+		 status.setMessage("Passenger Added Successfully"); 
+		 return status;	
+		 }
+	
 	}
