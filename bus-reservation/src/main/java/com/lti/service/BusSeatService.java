@@ -1,5 +1,9 @@
 package com.lti.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,5 +37,9 @@ public class BusSeatService {
 		return busSeat.getBus().getBusNumber();
 	}	
 	
-		
+		public List getBusSeatStatus(int busNumber, int scheduleId){
+			
+			List busStatus=busSeatRepository.getStatusAndSeatNumber( busNumber, scheduleId);
+			return busStatus;
+		}
 }
