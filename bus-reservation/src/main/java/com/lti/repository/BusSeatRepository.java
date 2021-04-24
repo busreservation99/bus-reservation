@@ -2,6 +2,7 @@ package com.lti.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import com.lti.entity.BusSeat;
 
 @Repository
 public class BusSeatRepository extends GenericRepository{
+
 	public boolean isBusPresent(int busNumber) {
 		return (Long)
 		entityManager
@@ -20,16 +22,21 @@ public class BusSeatRepository extends GenericRepository{
 	}
 	
 	public List getStatusAndSeatNumber(int busNumber,int scheduleId) {
-		List seatStatus=new ArrayList<>();
-		seatStatus=
+		List seatStatus=
 		entityManager
 		.createQuery("select s.status,s.seatNumber from  BusSeat s where s.schedule.scheduleId=:sid and s.bus.busNumber=:bn")
 		.setParameter("sid", scheduleId)
 		.setParameter("bn", busNumber)
 		.getResultList();
 		
-		
 		return seatStatus;
 	}
-	
+
+	public int updateSeatStatus(int seatId) {
+		BusSeat s= new BusSeat();
+		s=entityManager.find(BusSeat.class, seatId);
+		s.setStatus("N");
+		 save(s);
+		return seatId;
+	}
 }

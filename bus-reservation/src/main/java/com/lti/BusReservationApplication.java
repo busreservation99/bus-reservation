@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.lti.repository.AdminRepository;
+import com.lti.repository.BusSeatRepository;
 
 @SpringBootApplication
 public class BusReservationApplication {
