@@ -1,11 +1,13 @@
 package com.lti.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.BusSeatStatus;
 import com.lti.dto.ScheduleStatus;
+import com.lti.dto.UpdateSeat;
 import com.lti.entity.BusSeat;
 import com.lti.exception.BusSeatServiceException;
 import com.lti.exception.ScheduleServiceException;
@@ -49,5 +52,21 @@ public class BusSeatController {
 	public List getseatStatus(@RequestParam("busno")int bus,@RequestParam("schedule")int schedule) {
 		List seatsS=busSeatService.getBusSeatStatus(bus, schedule);
 		return seatsS;
+	}
+	
+	@PostMapping("/updateSeats")
+	public List<UpdateSeat> updateSeat(@RequestParam List<Integer> seatId) {
+		List<UpdateSeat> us= new ArrayList<>();
+		for(int seats:seatId) {
+		int s= busSeatService.SeatStatusUpdate(seats);
+		UpdateSeat  uS= new UpdateSeat();
+		uS.setMessage("Seats Updated");
+		uS.setSeatId(s);
+		uS.setStatus(true);
+		us.add(uS);
+		
+	
+		}
+		return us;
 	}
 }

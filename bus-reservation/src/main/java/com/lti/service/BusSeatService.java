@@ -42,4 +42,8 @@ public class BusSeatService {
 			List busStatus=busSeatRepository.getStatusAndSeatNumber( busNumber, scheduleId);
 			return busStatus;
 		}
+		public int SeatStatusUpdate(int seatId) {
+			return 	busSeatRepository.updateSeatStatus(seatId);
+			
+		}
 }
