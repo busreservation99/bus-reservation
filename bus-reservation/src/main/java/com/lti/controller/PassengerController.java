@@ -53,7 +53,7 @@ public class PassengerController {
 
 
 		}
-	
+	//Multiple passenger input
 	@PostMapping("/addPassengers2")
 	public Status addAllPassengers(@RequestBody List<Passenger> passenger){
 		for (Passenger p : passenger) {
